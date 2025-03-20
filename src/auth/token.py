@@ -1,8 +1,6 @@
 from datetime import datetime, timedelta, timezone
 
-
 import jwt
-
 
 from src.auth.exception import InvalidTokenError, ExpiredTokenError
 from src.settings import settings
@@ -37,5 +35,4 @@ def decode_token(token: str) -> dict:
     except jwt.ExpiredSignatureError:
         raise ExpiredTokenError()    
     except jwt.InvalidTokenError:
-
         raise InvalidTokenError()

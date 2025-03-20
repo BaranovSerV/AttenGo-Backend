@@ -6,6 +6,12 @@ class API(BaseSettings):
     API_PORT: int
 
 
+class Schedule(BaseSettings):
+    API_SCHEDULE: str
+
+class Bot(BaseSettings):
+    BOT_API_TOKEN: str
+
 class JWT(BaseSettings):
     SECRET_KEY: str  
     ALGORITHM: str
@@ -30,7 +36,7 @@ class Postgres(BaseSettings):
         )
 
 class Settings(
-    API, JWT, Postgres
+    API, JWT, Postgres, Bot, Schedule
 ):
     model_config = SettingsConfigDict(env_file=".env")
 
