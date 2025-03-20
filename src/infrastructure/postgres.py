@@ -8,8 +8,8 @@ from sqlalchemy.orm import declarative_base
 
 from src.settings import settings
 
-DATABASE_URL = settings.postgres_url
 
+DATABASE_URL = settings.postgres_url
 
 engine = create_async_engine(url=DATABASE_URL)
 

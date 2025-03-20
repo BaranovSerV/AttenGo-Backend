@@ -7,7 +7,7 @@ from src.auth.token import create_token
 from src.settings import settings
 
 
-router = APIRouter(prefix="/api/users/auth", tags=["auth"])
+router = APIRouter(prefix="/api/auth", tags=["auth"])
 
 
 

@@ -8,7 +8,7 @@ from alembic import context
 
 
 from src.models import *
-from src.infrastructure.database import Base
+from src.infrastructure.postgres import Base
 from src.settings import settings
 
 
