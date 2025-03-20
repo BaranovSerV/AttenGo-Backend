@@ -7,7 +7,6 @@ logger.remove()
 
 logger.add("logs/debug.log", level="DEBUG", rotation="10 MB", compression="zip")
 
-
 logger.add("logs/info.log", level="INFO", rotation="10 MB", compression="zip")
 
 logger.add("logs/errors.log", level="ERROR", rotation="5 MB", compression="zip")

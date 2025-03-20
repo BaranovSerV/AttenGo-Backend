@@ -13,8 +13,24 @@ class JWT(BaseSettings):
     REFRESH_TOKEN_EXPIRE_DAYS: int
 
 
+class Postgres(BaseSettings):
+    POSTGRES_HOST: str
+    POSTGRES_PORT: int
+    POSTGRES_USER: str
+    POSTGRES_DB: str
+    POSTGRES_PASSWORD: str
+    POSTGRES_DRIVER: str
+
+    @property
+    def postgres_url(self):
+        return (
+            f"{self.POSTGRES_DRIVER}://{self.POSTGRES_USER}:"\
+            f"{self.POSTGRES_PASSWORD}@{self.POSTGRES_HOST}:"\
+            f"{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
+        )
+
 class Settings(
-    API, JWT
+    API, JWT, Postgres
 ):
     model_config = SettingsConfigDict(env_file=".env")
 
