@@ -9,3 +9,11 @@ class TelegramAuthRequest(BaseModel):
     photo_url: str
     auth_date: int
     hash: str
+
+
+class AuthUserShema(BaseModel):
+    id: int
+    group_id: int | None
+    role: str
+
+

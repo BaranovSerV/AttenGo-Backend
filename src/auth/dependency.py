@@ -3,6 +3,7 @@ from fastapi import Depends, HTTPException, status, Cookie
 from src.auth.exception import ExpiredTokenError, InvalidTokenError
 from src.auth.token import decode_token
 from src.auth.service import AuthService
+from src.auth.shemas import AuthUserShema
 from src.user.repository import UserRepository
 from src.user.dependency import get_user_repository
 
@@ -32,3 +33,7 @@ async def get_current_refresh_token_payload(
         raise HTTPException(status_code=401, detail="Invalid access token")
 
 
+async def get_current_auth_user(
+    payload: dict = Depends(get_current_refresh_token_payload)
+):
+    return AuthUserShema(**payload)

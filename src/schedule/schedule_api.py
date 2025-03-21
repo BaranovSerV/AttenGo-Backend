@@ -1,5 +1,10 @@
-import aiohttp
+from datetime import datetime
 
+import aiohttp
+from pydantic import TypeAdapter
+
+from src.schedule.exception import BadRequestGroupError
+from src.schedule.shemas import LessonShema, ScheduleShema, LessonsDay
 from src.logger import logger
 from src.settings import settings
 
@@ -23,6 +28,28 @@ class APISchedule:
             return None
 
 
+    async def schedule_by_group(
+        self,
+        group_id: int,
+        start_time: datetime,
+        end_time: datetime
+    ):
+       
+        start_date = start_time.strftime("%Y-%m-%d")
+
+        end_date = end_time.strftime("%Y-%m-%d")
+
+        url = f"{self.base_url}/schedule/group/{group_id}?start={start_date}&finish={end_date}"
+
+
+        data = await self._get_data(url)
+
+        if data is None:
+            return None
+        
+        return data
+
+
     async def group_id(self, group: str) -> int:
         url = f"{self.base_url}/search?type=group&term={group}"
         data = await self._get_data(url)
@@ -31,4 +58,4 @@ class APISchedule:
             return data[0].get("id")
 
         else:
-            raise ValueError() 
+            raise BadRequestGroupError()
