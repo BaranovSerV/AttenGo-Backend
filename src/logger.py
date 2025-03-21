@@ -14,6 +14,6 @@ logger.add("logs/errors.log", level="ERROR", rotation="5 MB", compression="zip")
 logger.add(
 
     sys.stdout,
-    level="INFO",
+    level="DEBUG",
     format="<level>{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}</level>",
 )

@@ -28,7 +28,7 @@ async def group_schedule(
 
     schedule = validate_schedule(data)
 
-    return {"schedule": schedule}
+    return {"schedule_of_group": schedule}
 
 @router.get("/{group_name}/id")
 async def get_group_id(

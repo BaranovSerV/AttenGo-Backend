@@ -13,3 +13,7 @@ class User(Base):
     role: Mapped[str] = mapped_column(String, default="ordinary")
 
     group: Mapped["Group"] = relationship("Group", back_populates="users")
+    attendance: Mapped[list["Attendance"]] = relationship(
+            "Attendance", back_populates="student"
+    )
+

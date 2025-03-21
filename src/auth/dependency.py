@@ -1,5 +1,6 @@
 from fastapi import Depends, HTTPException, status, Cookie
 
+from src.logger import logger
 from src.auth.exception import ExpiredTokenError, InvalidTokenError
 from src.auth.token import decode_token
 from src.auth.service import AuthService
@@ -18,6 +19,7 @@ async def get_current_refresh_token_payload(
     refresh_token: str = Cookie(None)
 ):
     if not refresh_token:
+        logger.error("Logger missing")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Access token is missing",
@@ -27,9 +29,11 @@ async def get_current_refresh_token_payload(
         payload = decode_token(refresh_token)
         return payload
     except ExpiredTokenError:
+        logger.error("logger Expired")
         raise HTTPException(status_code=401, detail="Access token expired")
 
     except InvalidTokenError:
+        logger.error("Invalid Token")
         raise HTTPException(status_code=401, detail="Invalid access token")
 
 

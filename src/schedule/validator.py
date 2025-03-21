@@ -4,7 +4,7 @@ from src.schedule.shemas import LessonsDay, LessonShema, ScheduleShema
 
 
 PAIR_TIMES = [
-    "09:20", "11:10", "13:45", "15:35", "17:10"
+    "09:20", "11:10", "13:45", "15:35", "17:20"
 ]
 
 def get_pair_number(start_time: str) -> int | None:

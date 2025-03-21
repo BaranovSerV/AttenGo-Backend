@@ -13,7 +13,10 @@ for router in ROUTERS:
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://ultimately-talented-louse.ngrok-free.app"],  
+    allow_origins=[
+        "https://ultimately-talented-louse.ngrok-free.app",
+        "http://localhost:5173"
+    ],  
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["*"],

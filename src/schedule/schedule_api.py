@@ -1,10 +1,8 @@
 from datetime import datetime
 
 import aiohttp
-from pydantic import TypeAdapter
 
 from src.schedule.exception import BadRequestGroupError
-from src.schedule.shemas import LessonShema, ScheduleShema, LessonsDay
 from src.logger import logger
 from src.settings import settings
 
